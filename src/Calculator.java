@@ -7,9 +7,9 @@ public class Calculator implements ActionListener {
     private static JFrame frame;
     private static JTextField inputField;
     JButton[] numberButtons = new JButton[10];
-    JButton[] functionButtons = new JButton[9];
+    JButton[] functionButtons = new JButton[10];
     JButton addButton, subButton, multiplyButton, divideButton;
-    JButton decimalButton, equalsButton, deleteButton, clearButton, negativeButton;
+    JButton decimalButton, equalsButton, deleteButton, clearButton, negativeButton,squaredButton;
     JPanel panel;
 
     Font font = new Font("Arial", Font.BOLD, 30);
@@ -38,6 +38,9 @@ public class Calculator implements ActionListener {
         deleteButton = new JButton("Del");
         clearButton = new JButton("C");
         negativeButton = new JButton("(-)");
+        squaredButton = new JButton("(x²)");
+        //√
+        //%
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -48,22 +51,24 @@ public class Calculator implements ActionListener {
         functionButtons[6] = deleteButton;
         functionButtons[7] = clearButton;
         functionButtons[8] = negativeButton;
+        functionButtons[9] = squaredButton;
 
-        for (int i = 0; i < 9; i++) {
-            functionButtons[i].addActionListener(this);
-            functionButtons[i].setFont(font);
-            functionButtons[i].setFocusable(false);
+        for (JButton functionButton : functionButtons) {
+            functionButton.setFont(font);
+            functionButton.addActionListener(this);
+            functionButton.setFocusable(false);
         }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < numberButtons.length; i++) {
             numberButtons[i] = new JButton(String.valueOf(i));
             numberButtons[i].setFont(font);
             numberButtons[i].addActionListener(this);
             numberButtons[i].setFocusable(false);
         }
 
-        negativeButton.setBounds(50, 90, 100, 50);
-        deleteButton.setBounds(150, 90, 100, 50);
-        clearButton.setBounds(250, 90, 100, 50);
+        negativeButton.setBounds(50, 80, 100, 35);
+        deleteButton.setBounds(150, 80, 100, 35);
+        clearButton.setBounds(250, 80, 100, 35);
+        squaredButton.setBounds(250, 120, 100, 35);
 
         panel = new JPanel();
         panel.setBounds(50, 160, 300, 300);
@@ -91,6 +96,7 @@ public class Calculator implements ActionListener {
         frame.add(negativeButton);
         frame.add(deleteButton);
         frame.add(clearButton);
+        frame.add(squaredButton);
         frame.add(inputField);
         frame.setVisible(true);
     }
