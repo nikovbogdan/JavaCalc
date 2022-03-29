@@ -4,7 +4,6 @@ import java.awt.event.*;
 
 public class Calculator implements ActionListener {
 
-    private static JFrame frame;
     private static JTextField inputField;
     JButton[] numberButtons = new JButton[10];
     JButton[] functionButtons = new JButton[10];
@@ -18,7 +17,7 @@ public class Calculator implements ActionListener {
 
     public Calculator() {
 
-        frame = new JFrame("Calculator");
+        JFrame frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(420, 550);
         frame.setLayout(null);
@@ -166,6 +165,10 @@ public class Calculator implements ActionListener {
             for (int i = 0; i < string.length() - 1; i++) {
                 inputField.setText(inputField.getText() + string.charAt(i));
             }
+        }
+        if (e.getSource() == squaredButton) {
+            num1 = Double.parseDouble(inputField.getText());
+            inputField.setText(String.valueOf(num1*num1));
         }
     }
 }
