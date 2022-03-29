@@ -6,9 +6,9 @@ public class Calculator implements ActionListener {
 
     private static JTextField inputField;
     JButton[] numberButtons = new JButton[10];
-    JButton[] functionButtons = new JButton[10];
+    JButton[] functionButtons = new JButton[11];
     JButton addButton, subButton, multiplyButton, divideButton;
-    JButton decimalButton, equalsButton, deleteButton, clearButton, negativeButton,squaredButton;
+    JButton decimalButton, equalsButton, deleteButton, clearButton, negativeButton,squaredButton, percentButton;
     JPanel panel;
 
     Font font = new Font("Arial", Font.BOLD, 30);
@@ -38,8 +38,8 @@ public class Calculator implements ActionListener {
         clearButton = new JButton("C");
         negativeButton = new JButton("(-)");
         squaredButton = new JButton("(x²)");
+        percentButton = new JButton("(%)");
         //√
-        //%
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -51,6 +51,7 @@ public class Calculator implements ActionListener {
         functionButtons[7] = clearButton;
         functionButtons[8] = negativeButton;
         functionButtons[9] = squaredButton;
+        functionButtons[10] = percentButton;
 
         for (JButton functionButton : functionButtons) {
             functionButton.setFont(font);
@@ -68,6 +69,7 @@ public class Calculator implements ActionListener {
         deleteButton.setBounds(150, 80, 100, 35);
         clearButton.setBounds(250, 80, 100, 35);
         squaredButton.setBounds(250, 120, 100, 35);
+        percentButton.setBounds(150, 120, 100, 35);
 
         panel = new JPanel();
         panel.setBounds(50, 160, 300, 300);
@@ -96,6 +98,7 @@ public class Calculator implements ActionListener {
         frame.add(deleteButton);
         frame.add(clearButton);
         frame.add(squaredButton);
+        frame.add(percentButton);
         frame.add(inputField);
         frame.setVisible(true);
     }
