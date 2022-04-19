@@ -8,7 +8,7 @@ public class Calculator implements ActionListener {
     JButton[] numberButtons = new JButton[10];
     JButton[] functionButtons = new JButton[11];
     JButton addButton, subButton, multiplyButton, divideButton;
-    JButton decimalButton, equalsButton, deleteButton, clearButton, negativeButton,squaredButton, percentButton;
+    JButton decimalButton, equalsButton, deleteButton, clearButton, negativeButton, squaredButton, percentButton;
     JPanel panel;
 
     Font font = new Font("Arial", Font.BOLD, 30);
@@ -104,7 +104,7 @@ public class Calculator implements ActionListener {
     }
 
     public static void main(String[] args) {
-       new Calculator();
+        new Calculator();
 
     }
 
@@ -141,6 +141,7 @@ public class Calculator implements ActionListener {
         }
         if (e.getSource() == equalsButton) {
             num2 = Double.parseDouble(inputField.getText());
+
             switch (operator) {
                 case '+' -> result = num1 + num2;
                 case '-' -> result = num1 - num2;
@@ -149,6 +150,7 @@ public class Calculator implements ActionListener {
             }
             inputField.setText(String.valueOf(result));
             num1 = result;
+
         }
         if (e.getSource() == clearButton) {
             inputField.setText("");
@@ -157,9 +159,9 @@ public class Calculator implements ActionListener {
             result = 0;
         }
         if (e.getSource() == negativeButton) {
-          double token = Double.parseDouble(inputField.getText());
-          token*=-1;
-          inputField.setText(String.valueOf(token));
+            double token = Double.parseDouble(inputField.getText());
+            token *= -1;
+            inputField.setText(String.valueOf(token));
 
         }
         if (e.getSource() == deleteButton) {
@@ -171,7 +173,32 @@ public class Calculator implements ActionListener {
         }
         if (e.getSource() == squaredButton) {
             num1 = Double.parseDouble(inputField.getText());
-            inputField.setText(String.valueOf(num1*num1));
+            inputField.setText(String.valueOf(num1 * num1));
+
         }
+        if (e.getSource() == percentButton) {
+            switch (operator) {
+                case '-' -> {
+                    num2 = Double.parseDouble(inputField.getText());
+                    result = num1 - (num1 * num2 / 100);
+                }
+                case '+' -> {
+                    num2 = Double.parseDouble(inputField.getText());
+                    result = num1 + (num1 * num2 / 100);
+                }
+                case '/' -> {
+                    num2 = Double.parseDouble(inputField.getText());
+                    result = num1 / (num2 / 100);
+                }
+                case '*' -> {
+                    num2 = Double.parseDouble(inputField.getText());
+                    result = num1 * (num2 / 100);
+                }
+            }
+            inputField.setText(String.valueOf(result));
+            num1 = result;
+        }
+        //Math.sqrt за корен кв
+
     }
 }
