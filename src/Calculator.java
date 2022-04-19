@@ -207,7 +207,5 @@ public class Calculator implements ActionListener {
             inputField.setText(String.valueOf(Math.sqrt(num1)));
 
         }
-        //Math.sqrt за корен кв
-
     }
 }
